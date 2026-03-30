@@ -76,7 +76,7 @@ const videoWrap = document.getElementById('video-wrap') as HTMLDivElement
 btnSpeed.addEventListener('click', () => {
   is2x = !is2x
   videoWrap.style.width = is2x ? '576px' : '288px'
-  btnSpeed.textContent = is2x ? '1x' : '2x'
+  btnSpeed.textContent = is2x ? 'zoom 1x' : 'zoom 2x'
 })
 
 btnToggle.addEventListener('click', () => {
@@ -215,6 +215,15 @@ function render(time: number) {
     }
     ctx.fillText(word, wordX, wordY)
     wordX += wordW
+  }
+
+  // Center CTA — no void effect so it's easy to click
+  if (!chromeCta.hidden && !audioConnected) {
+    const ctaText = openChromeCopy.textContent || ''
+    const fullW = ctx.measureText(ctaText).width
+    const cwX = (W - fullW) / 2
+    const ctaBaseY = H / 2 + uiFontSize / 2
+    ctx.fillText(ctaText, cwX, ctaBaseY)
   }
 
   // Social handle
