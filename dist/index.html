@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://www.google.com/s2/favicons?domain=www.fredagain.com&sz=64" />
+  <meta name="description" content="Fred again.. & Thomas Bangalter & Pretext" />
+  <title>Pretext again..</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; background: #0f0f0f; }
+    :root { --ui-font-size: 13px; }
+    canvas { display: block; }
+    canvas.audio-connected { cursor: none; }
+    /* --- Floating video panel --- */
+    #video-panel {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 30;
+      font-family: "Inter", sans-serif;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    #video-panel[hidden] { display: none; }
+    #video-panel.collapsed #video-wrap,
+    #video-panel.collapsed #url-row,
+    #video-panel.collapsed #btn-speed { display: none; }
+    #video-wrap {
+      width: 288px;
+      aspect-ratio: 16/9;
+      border-radius: 0;
+      overflow: hidden;
+      border: 1px solid #fff;
+      background: #000;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #video-wrap::before {
+      content: '';
+      width: 24px;
+      height: 24px;
+      border: 2px solid #333;
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .panel-btn {
+      color: #fff;
+      font-size: var(--ui-font-size);
+      cursor: pointer;
+      font-family: "Inter", sans-serif;
+      transition: color 0.15s;
+      white-space: nowrap;
+      user-select: none;
+    }
+    #btn-row {
+      display: flex;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+    #btn-audio::after {
+      content: ",";
+      color: #fff;
+    }
+    #twitter-link {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 30;
+      color: #fff;
+      font-size: var(--ui-font-size);
+      font-family: "Inter", sans-serif;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    #chrome-cta {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      font-family: "Inter", sans-serif;
+    }
+    #chrome-cta[hidden] { display: none; }
+    #open-chrome-copy {
+      pointer-events: auto;
+      color: #fff;
+      font: inherit;
+      font-size: var(--ui-font-size);
+      text-decoration: none;
+      cursor: default;
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-ixanVzkl.js"></script>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <div id="chrome-cta" hidden>
+    <span id="open-chrome-copy">open again in chrome</span>
+  </div>
+
+  <div id="video-panel" hidden>
+    <div id="video-wrap">
+      <iframe id="yt-frame" data-src="https://www.youtube.com/embed/gfF8jzBVWvM?autoplay=1&start=2265&rel=0&enablejsapi=1&controls=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div id="btn-row">
+      <span class="panel-btn" id="btn-audio">connect audio</span>
+      <span class="panel-btn" id="btn-toggle">hide</span>
+      <span class="panel-btn" id="btn-speed">2x</span>
+    </div>
+  </div>
+
+  <a id="twitter-link" href="https://twitter.com/jaymehoffman" target="_blank" rel="noreferrer">@jaymehoffman</a>
+
+</body>
+</html>
